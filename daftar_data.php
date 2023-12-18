@@ -69,25 +69,13 @@ li{
 <div class="container">
     <br>
 <?php
-
+ob_start();
     include "koneksi.php";
-
-
     if (isset($_GET['id_peserta'])) {
         $id_peserta=htmlspecialchars($_GET["id_peserta"]);
 
         $sql="delete from peserta where id_peserta='$id_peserta' ";
         $hasil=mysqli_query($connect,$sql);
-
-
-            if ($hasil) {
-                header("Location:daftar_data.php");
-
-            }
-            else {
-                echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
-
-            }
         }
 ?>
 
@@ -111,16 +99,14 @@ li{
         </tr>
         </thead>
 
-        <?php
-        include "koneksi.php";
+    <?php
         $sql="select * from peserta order by id_peserta desc";
-
         $hasil=mysqli_query($connect,$sql);
         $no=0;
         while ($data = mysqli_fetch_array($hasil)) {
             $no++;
 
-            ?>
+    ?>
             <tbody>
             <tr>
                 <td><?php echo $no;?></td>
@@ -138,7 +124,7 @@ li{
             </tbody>
             <?php
         }
-        ?>
+    ?>
     </table>
     
 </div>
