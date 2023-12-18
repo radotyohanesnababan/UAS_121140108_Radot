@@ -2,6 +2,11 @@
 <html>
 <head>
     <title>Form Pendaftaran Peserta</title>
+    <script type="text/javascript">
+        function tampilkanPesan() {
+            alert("Data sudah terekam");
+        }
+    </script>
     <style>
 body, ul {
   margin: 0;
@@ -73,40 +78,6 @@ input[type="submit"] {
 </head>
 <body>
 <div class="container">
-    <?php
-    include "koneksi.php";
-    function input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        $nama=input($_POST["nama"]);
-        $nim=input($_POST["nim"]);
-        $prodi=input($_POST["prodi"]);
-        $email=input($_POST["email"]);
-        $jenis_kelamin=input($_POST["jenis_kelamin"]);
-        $tanggal_lahir=input($_POST["tanggal_lahir"]);
-        $alamat=input($_POST["alamat"]);
-
-        //Query input menginput data kedalam tabel anggota
-        $sql="insert into peserta (nama,nim,prodi,email,jenis_kelamin,tanggal_lahir,alamat) values
-		('$nama','$nim','$prodi','$email','$jenis_kelamin','$tanggal_lahir','$alamat')";
-
-
-        $hasil=mysqli_query($connect,$sql);
-        if ($hasil) {
-            header("Location:daftar_data.php");
-        }
-        else {
-            echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
-
-        }
-
-    }
-    ?>
 <div class="topbar">
   <div class="logo">
     <img src="logo.png" alt="Logo">
@@ -133,7 +104,9 @@ input[type="submit"] {
       <input type="date" id="tanggal_lahir" name="tanggal_lahir" required />
       <label for="alamat">Alamat</label>
       <textarea id="alamat" name="alamat" required></textarea>
-      <button type="submit" class="submit-button">Submit</button>
+         <button onclick="tampilkanPesan()" type="submit" class="submit-button">Submit</button>
+
+      
     </form>
 </div>
 <footer>
@@ -143,3 +116,28 @@ input[type="submit"] {
       </footer>
 </body>
 </html>
+
+<?php 
+include "koneksi.php";
+    function input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $nama=input($_POST["nama"]);
+        $nim=input($_POST["nim"]);
+        $prodi=input($_POST["prodi"]);
+        $email=input($_POST["email"]);
+        $jenis_kelamin=input($_POST["jenis_kelamin"]);
+        $tanggal_lahir=input($_POST["tanggal_lahir"]);
+        $alamat=input($_POST["alamat"]);
+
+        //Query input menginput data kedalam tabel anggota
+        $sql="insert into peserta (nama,nim,prodi,email,jenis_kelamin,tanggal_lahir,alamat) values
+		('$nama','$nim','$prodi','$email','$jenis_kelamin','$tanggal_lahir','$alamat')";
+
+        $hasil=mysqli_query($connect,$sql);
+        }?>
