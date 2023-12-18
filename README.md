@@ -42,7 +42,9 @@ Pada halaman login akan dimintai Username dan Password yang sudah diberikan di I
   8. alamat varchar(50)
 
 Teknis untuk penambahan data dilakukan dengan metode post melalui PHP, dengan query SQL sebagai berikut :
-INSERT INTO PESERTA (nama,nim,prodi,email,jenis_kelamin,tanggal_lahir,alamat) values
+
+INSERT INTO PESERTA (nama,nim,prodi,email,jenis_kelamin,tanggal_lahir,alamat) 
+values
 ('$nama','$nim','$prodi','$email','$jenis_kelamin','$tanggal_lahir','$alamat')
 
 Teknik untuk penghapusan data dilakukan dengan teknik GET yang akan mngambil id_peserta dari list data, dengan query SQL sebagai berikut :
