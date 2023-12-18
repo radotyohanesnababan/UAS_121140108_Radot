@@ -53,7 +53,7 @@ DELETE from PESERTA where id_peserta='$id_peserta'
 ## State Management
 Pada bagian state management, dibuat sebuah session saat halaman login, halaman login akan mengeluarkan pesan error jika menginputkan username/password yang salah. Perintah 'session' berada di file index.php sebagai halaman login
 
-### Hosting Website
+## Hosting Website
 Akan dijelaskan langkah langkah untuk hosting website dibawah ini :
   1. Buka website "000webhost.com"
   2. Login dengan akun pribadi
